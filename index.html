@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     :root { --brand-teal: #1d8870; --brand-dark: #0f2e2a; --brand-cream: #f7f5f0; }
-    .nav-logo img { height: 45px; width: auto; vertical-align: middle; }
+    /* Visual fix for the horizontal logo layout in the nav */
+    .nav-logo img { height: 40px; width: auto; vertical-align: middle; }
     .hero-capsule-art .cap-left { background: var(--brand-dark); }
     .hero-capsule-art .cap-right { background: var(--brand-teal); }
   </style>
@@ -20,7 +21,7 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="mixameds_square_logo_final.svg" alt="MixaMeds Logo">
+        <img src="mixameds_horiz_final_dark.svg" alt="MixaMeds Logo">
       </a>
       <div class="nav-links">
         <a href="#how-it-works">How It Works</a>
@@ -56,10 +57,26 @@
       <div class="section-label">The Process</div>
       <h2 class="section-title">Four steps to<br/><em>feeling better.</em></h2>
       <div class="steps-grid">
-        <div class="step" data-step="1"><h3>Complete Intake</h3><p>Answer a short online health questionnaire. Takes about 5 minutes.</p></div>
-        <div class="step" data-step="2"><h3>Provider Review</h3><p>A licensed US provider reviews your intake within 24–48 hours.</p></div>
-        <div class="step" data-step="3"><h3>Get Prescription</h3><p>If approved, your medication is prepared by a licensed compounding pharmacy.</p></div>
-        <div class="step" data-step="4"><h3>Home Delivery</h3><p>Your medication ships free, directly to your door with automatic refills.</p></div>
+        <div class="step" data-step="1">
+          <div class="step-num">01</div>
+          <h3>Complete Your Intake</h3>
+          <p>Answer a short health questionnaire. Takes about 5 minutes.</p>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-num">02</div>
+          <h3>Provider Review</h3>
+          <p>A licensed US provider reviews your intake within 24–48 hours.</p>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-num">03</div>
+          <h3>Get Your Prescription</h3>
+          <p>If approved, your medication is sent to a licensed pharmacy.</p>
+        </div>
+        <div class="step" data-step="4">
+          <div class="step-num">04</div>
+          <h3>Delivered to Your Door</h3>
+          <p>Your medication ships free, directly to your home. Automatic refills.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -75,8 +92,8 @@
           <p class="med-desc">Active ingredient as Ozempic® and Wegovy®. Weekly injection.</p>
           <ul class="med-features">
             <li>Reduces appetite & cravings</li>
-            <li>Slows gastric emptying</li>
-            <li>Dose titration management included</li>
+            <li>Clinically studied mechanism</li>
+            <li>Dose titration included</li>
           </ul>
           <div class="med-price">From <strong>$179</strong><span>/first month</span></div>
           <a href="#intake" class="btn-primary">Start Semaglutide</a>
@@ -87,7 +104,7 @@
           <ul class="med-features">
             <li>Dual-action GLP-1 & GIP</li>
             <li>Enhanced insulin sensitivity</li>
-            <li>Dose titration management included</li>
+            <li>Dose titration included</li>
           </ul>
           <div class="med-price">From <strong>$249</strong><span>/first month</span></div>
           <a href="#intake" class="btn-outline">Start Tirzepatide</a>
@@ -96,18 +113,39 @@
     </div>
   </section>
 
-  <section class="section why-section">
+  <section class="section pricing-section" id="pricing">
     <div class="container">
-      <div class="why-grid">
-        <div class="why-text">
-          <div class="section-label">Why MixaMeds</div>
-          <h2 class="section-title">Weight loss shouldn't<br/>require a <em>waiting room.</em></h2>
-          <p>No office visits. No insurance battles. No long-term commitments. Just a straightforward path to treatment that works.</p>
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Transparent pricing.<br/><em>No surprises.</em></h2>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-tier">Semaglutide</div>
+          <div class="price-amount">$179<span>/mo</span></div>
+          <div class="price-sub">First month · then $299/mo</div>
+          <a href="#intake" class="btn-primary">Get Started</a>
         </div>
-        <div class="why-cards">
-          <div class="why-card"><h4>Compounded Pharmacies</h4><p>Prepared in FDA-regulated US facilities.</p></div>
-          <div class="why-card"><h4>HIPAA Compliant</h4><p>Your health data is encrypted and protected. Always.</p></div>
-          <div class="why-card"><h4>Discreet Packaging</h4><p>Shipped in plain packaging with no indication of contents.</p></div>
+        <div class="price-card featured-price">
+          <div class="price-popular">Best Value</div>
+          <div class="price-tier">Tirzepatide</div>
+          <div class="price-amount">$249<span>/mo</span></div>
+          <div class="price-sub">First month · then $349/mo</div>
+          <a href="#intake" class="btn-primary-dark">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently asked<br/><em>questions.</em></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Do I need insurance? <span>+</span></button>
+          <div class="faq-a"><p>No. MixaMeds operates on a simple cash-pay model. No insurance needed.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I cancel anytime? <span>+</span></button>
+          <div class="faq-a"><p>Yes. MixaMeds is entirely month-to-month with no long-term contracts.</p></div>
         </div>
       </div>
     </div>
@@ -118,8 +156,8 @@
       <div class="intake-box">
         <h3 style="text-align:center; margin-bottom: 2rem;">Patient Intake</h3>
         <div class="intake-embed-placeholder" style="background: white; border: 2px dashed var(--brand-teal); padding: 4rem; text-align: center; border-radius: 12px;">
-          <img src="mixameds_square_logo_final.svg" style="height: 50px; opacity: 0.3; margin-bottom: 1rem;">
-          <p style="color: var(--brand-teal); font-weight: 600;">Your TelehealthStack Form will appear here.</p>
+          <img src="mixameds_square_logo_final_dark.svg" style="height: 50px; opacity: 0.3; margin-bottom: 1rem;">
+          <p style="color: var(--brand-teal); font-weight: 600;">TelehealthStack Intake Form will appear here.</p>
           </div>
       </div>
     </div>
