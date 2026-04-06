@@ -4,70 +4,82 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MixaMeds — Simple Weight Loss, Delivered</title>
-  
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   
   <style>
-    /* 1. BRAND VARIABLES */
     :root { 
-      --brand-blue: #007BFF; 
+      --brand-blue: #007BFF; /* Electric Blue from Biz Plan */
       --brand-black: #000000; 
       --brand-white: #FFFFFF;
-      --gray-light: #F8F9FA;
+      --gray-bg: #F9FAFB;
     }
 
-    /* 2. RESET & BASE STYLES */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'DM Sans', sans-serif; line-height: 1.6; color: var(--brand-black); background-color: var(--brand-white); }
+    body { font-family: 'DM Sans', sans-serif; color: var(--brand-black); background: var(--brand-white); line-height: 1.6; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--brand-blue); }
 
-    /* 3. NAVIGATION */
-    .nav { background: var(--brand-black); padding: 1.2rem 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
+    /* NAVIGATION */
+    .nav { background: var(--brand-black); padding: 1.2rem 0; position: sticky; top: 0; z-index: 1000; }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-    .nav-logo img { height: 40px; width: auto; vertical-align: middle; }
-    .nav-links a { color: var(--brand-white); text-decoration: none; margin-left: 1.8rem; font-size: 0.95rem; font-weight: 500; }
-    .nav-cta { background: var(--brand-blue); padding: 0.7rem 1.4rem; border-radius: 4px; transition: 0.3s; }
-    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+    .nav-logo { color: white; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
+    .nav-links a { color: white; text-decoration: none; margin-left: 2rem; font-size: 0.9rem; font-weight: 500; }
+    .nav-cta { background: var(--brand-blue); padding: 0.7rem 1.4rem; border-radius: 4px; }
 
-    /* 4. HERO SECTION */
-    .hero { padding: 10rem 0 7rem; background: var(--brand-black); color: var(--brand-white); text-align: center; position: relative; overflow: hidden; }
-    .hero-headline { font-family: 'DM Serif Display', serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
-    .hero-headline em { color: var(--brand-blue); font-style: italic; }
-    .hero-body { font-size: 1.3rem; max-width: 650px; margin: 0 auto 3rem; color: #BBB; font-weight: 300; }
-    .btn-primary { background: var(--brand-blue); color: white; padding: 1.4rem 3rem; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 1.15rem; display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,123,255,0.3); }
-    .btn-primary:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(0,123,255,0.4); }
+    /* HERO */
+    .hero { background: var(--brand-black); color: white; padding: 10rem 0 6rem; text-align: center; }
+    .hero-headline { font-family: 'DM Serif Display', serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-body { font-size: 1.3rem; max-width: 700px; margin: 0 auto 3rem; color: #BBB; }
+    .btn-primary { background: var(--brand-blue); color: white; padding: 1.3rem 2.8rem; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 1.1rem; display: inline-block; transition: 0.3s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,123,255,0.4); }
 
-    /* 5. INTAKE SECTION */
-    .intake-section { padding: 6rem 0; background: var(--gray-light); }
-    .intake-box { max-width: 850px; margin: 0 auto; background: white; padding: 4rem; border-radius: 16px; border: 1px solid #EEE; box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
-    .intake-header { text-align: center; margin-bottom: 3.5rem; }
-    .intake-header h2 { font-family: 'DM Serif Display', serif; font-size: 2.8rem; margin-bottom: 1rem; }
-    .intake-header p { color: #666; font-size: 1.1rem; }
-    
-    .form-container { 
-      min-height: 450px; 
-      border: 2px dashed #DDD; 
-      border-radius: 12px; 
-      display: flex; 
-      flex-direction: column;
-      align-items: center; 
-      justify-content: center; 
-      text-align: center;
-      background: #FAFAFA;
-    }
+    /* STATS BAR */
+    .stats-bar { background: #111; padding: 2rem 0; border-top: 1px solid #333; }
+    .stats-inner { display: flex; justify-content: space-between; text-align: center; color: white; }
+    .stat-num { display: block; font-size: 1.8rem; font-weight: 700; color: var(--brand-blue); }
+    .stat-label { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* 6. FOOTER */
-    .footer { background: white; padding: 5rem 0 3rem; border-top: 1px solid #EEE; }
-    .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-    .footer-disclaimer { font-size: 0.75rem; color: #888; line-height: 1.8; padding-top: 2rem; border-top: 1px solid #F0F0F0; }
-    
-    /* MOBILE RESPONSIVENESS */
+    /* SECTIONS */
+    .section { padding: 7rem 0; }
+    .section-label { color: var(--brand-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem; }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 3rem; line-height: 1.2; margin-bottom: 3rem; }
+
+    /* HOW IT WORKS GRID */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; }
+    .step-num { color: var(--brand-blue); font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem; }
+    .step h3 { margin-bottom: 1rem; font-size: 1.4rem; }
+    .step p { color: #555; }
+
+    /* CARDS (MEDS & PRICING) */
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .card { background: white; padding: 3rem; border-radius: 12px; border: 1px solid #EEE; transition: 0.3s; }
+    .card:hover { border-color: var(--brand-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .price-amount { font-size: 3rem; font-weight: 700; margin: 1.5rem 0; }
+    .price-amount span { font-size: 1rem; color: #888; }
+    .card ul { list-style: none; margin-bottom: 2rem; }
+    .card li { margin-bottom: 0.8rem; color: #555; padding-left: 1.5rem; position: relative; }
+    .card li::before { content: "✓"; position: absolute; left: 0; color: var(--brand-blue); font-weight: 700; }
+
+    /* FAQ */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid #EEE; padding: 1.5rem 0; }
+    .faq-q { font-weight: 600; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; width: 100%; border: none; background: none; text-align: left; }
+
+    /* INTAKE BOX */
+    .intake-section { background: var(--gray-bg); }
+    .intake-box { background: white; max-width: 850px; margin: 0 auto; padding: 4rem; border-radius: 16px; border: 1px solid #EEE; text-align: center; }
+    .form-placeholder { min-height: 400px; border: 2px dashed #DDD; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 2rem; }
+
+    /* FOOTER */
+    .footer { padding: 5rem 0 3rem; border-top: 1px solid #EEE; }
+    .footer-legal { font-size: 0.75rem; color: #888; line-height: 1.8; margin-top: 3rem; border-top: 1px solid #F0F0F0; padding-top: 2rem; }
+
     @media (max-width: 768px) {
       .hero-headline { font-size: 2.8rem; }
+      .grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .intake-box { padding: 2rem; }
     }
   </style>
 </head>
@@ -75,13 +87,12 @@
 
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="/" class="nav-logo">
-        <img src="mixameds_logo_white.png" alt="MixaMeds">
-      </a>
+      <a href="/" class="nav-logo">Mixa<em>Meds</em></a>
       <div class="nav-links">
-        <a href="#how">How It Works</a>
+        <a href="#how">Process</a>
+        <a href="#meds">Treatments</a>
         <a href="#pricing">Pricing</a>
-        <a href="#intake" class="nav-cta">Get Started →</a>
+        <a href="#intake" class="nav-cta">Start Consultation →</a>
       </div>
     </div>
   </nav>
@@ -89,26 +100,64 @@
   <section class="hero">
     <div class="container">
       <h1 class="hero-headline">Weight loss that<br/><em>actually works.</em></h1>
-      <p class="hero-body">Compounded GLP-1 medications reviewed by licensed providers. No insurance required. Starting at $179.</p>
-      <div class="hero-actions">
-        <a href="#intake" class="btn-primary">Check Your Eligibility</a>
+      <p class="hero-body">Compounded GLP-1 medications reviewed by licensed US providers. No insurance needed. No long-term contracts.</p>
+      <a href="#intake" class="btn-primary">Get Started — $179 First Month</a>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="container stats-inner">
+      <div class="stat"><span class="stat-num">$179</span><span class="stat-label">First Month</span></div>
+      <div class="stat"><span class="stat-num">48hrs</span><span class="stat-label">Provider Review</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-label">Contracts</span></div>
+      <div class="stat"><span class="stat-num">50</span><span class="stat-label">States Served</span></div>
+    </div>
+  </div>
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-label">The Process</div>
+      <h2 class="section-title">Four steps to<br/><em>feeling better.</em></h2>
+      <div class="steps-grid">
+        <div class="step"><div class="step-num">01</div><h3>Complete Intake</h3><p>Answer a short health questionnaire in under 5 minutes.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Provider Review</h3><p>A licensed US provider reviews your intake within 24–48 hours.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Prescription</h3><p>If approved, your medication is prepared by an accredited pharmacy.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Home Delivery</h3><p>Ships free, directly to your door in discreet packaging.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="intake-section" id="intake">
+  <section class="section" id="meds" style="background: var(--gray-bg);">
+    <div class="container">
+      <div class="section-label">Medications</div>
+      <h2 class="section-title">Choose your<br/><em>treatment.</em></h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Compounded Semaglutide</h3>
+          <p>Weekly injection. Same active ingredient as Ozempic® and Wegovy®.</p>
+          <div class="price-amount">$179<span>/first month</span></div>
+          <ul><li>Reduces appetite & cravings</li><li>Dose titration management</li><li>Free shipping included</li></ul>
+          <a href="#intake" class="btn-primary" style="width:100%; text-align:center;">Select Semaglutide</a>
+        </div>
+        <div class="card">
+          <h3>Compounded Tirzepatide</h3>
+          <p>Weekly injection. Same active ingredient as Mounjaro® and Zepbound®.</p>
+          <div class="price-amount">$249<span>/first month</span></div>
+          <ul><li>Dual-action GIP/GLP-1</li><li>Enhanced metabolic support</li><li>Free shipping included</li></ul>
+          <a href="#intake" class="btn-primary" style="width:100%; text-align:center; background: #000;">Select Tirzepatide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section intake-section" id="intake">
     <div class="container">
       <div class="intake-box">
-        <div class="intake-header">
-          <h2>Medical Consultation</h2>
-          <p>Begin your assessment for Semaglutide or Tirzepatide therapy.</p>
-        </div>
-        
-        <div class="form-container">
-          <img src="mixameds_logo_white.png" style="height: 40px; filter: invert(1); opacity: 0.2; margin-bottom: 1.5rem;">
-          <p style="color: var(--brand-blue); font-weight: 600; letter-spacing: 1px;">
-            SECURE INTAKE PORTAL LOADING...
-          </p>
+        <div class="section-label">Intake Portal</div>
+        <h2 class="section-title">Start your evaluation</h2>
+        <p>Complete the form below to begin your consultation with a licensed provider.</p>
+        <div class="form-placeholder">
+          <p style="color: var(--brand-blue); font-weight: 600;">[ SECURE INTAKE FORM LOADING... ]</p>
         </div>
       </div>
     </div>
@@ -116,13 +165,12 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-top">
-        <p style="font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px;">MixaMeds</p>
-        <p style="font-size: 0.85rem; color: #666;">© 2026 MixaMeds LLC · hello@mixameds.com</p>
+      <div style="display:flex; justify-content: space-between; align-items: center;">
+        <p style="font-weight:700; font-size:1.5rem;">Mixa<em>Meds</em></p>
+        <p style="color:#666; font-size:0.9rem;">© 2026 MixaMeds LLC · hello@mixameds.com</p>
       </div>
-
-      <div class="footer-disclaimer">
-        <p><strong>IMPORTANT SAFETY INFORMATION:</strong> MixaMeds provides administrative and technology services to facilitate access to medical care. We are not a medical provider or a pharmacy. Medical services are provided by independent licensed practitioners. Compounded GLP-1 medications (Semaglutide/Tirzepatide) are not FDA-approved for safety or efficacy and are prepared in state-licensed compounding pharmacies. Always consult with a healthcare professional before starting any new medication. Individual results vary based on medical history and lifestyle factors.</p>
+      <div class="footer-legal">
+        <p><strong>IMPORTANT MEDICAL DISCLAIMER:</strong> MixaMeds connects patients with independent licensed providers and pharmacies[cite: 18]. We do not practice medicine or manufacture drugs[cite: 18]. Compounded medications are not FDA-approved equivalents of brand-name products[cite: 18, 63]. Results vary by individual health history[cite: 63]. Always consult a physician before starting therapy[cite: 18].</p>
       </div>
     </div>
   </footer>
