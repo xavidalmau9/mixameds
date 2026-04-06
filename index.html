@@ -3,64 +3,71 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MixaMeds — Radical Simplicity in Weight Loss</title>
+  <title>MixaMeds — Simple Weight Loss, Delivered</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   
   <style>
-    :root {
-      --brand-blue: #007BFF; /* Electric Blue from Biz Plan */
-      --brand-black: #000000;
+    /* 1. BRAND VARIABLES */
+    :root { 
+      --brand-blue: #007BFF; 
+      --brand-black: #000000; 
       --brand-white: #FFFFFF;
       --gray-light: #F8F9FA;
     }
 
+    /* 2. RESET & BASE STYLES */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'DM Sans', sans-serif; line-height: 1.6; color: var(--brand-black); background-color: var(--brand-white); }
-    
     .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-    /* Navigation */
-    .nav { background: var(--brand-black); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+    /* 3. NAVIGATION */
+    .nav { background: var(--brand-black); padding: 1.2rem 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-    .nav-logo img { height: 35px; width: auto; }
-    .nav-links a { color: var(--brand-white); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; font-weight: 500; }
-    .nav-cta { background: var(--brand-blue); padding: 0.6rem 1.2rem; border-radius: 4px; transition: 0.3s; }
-    .nav-cta:hover { background: #0056b3; }
+    .nav-logo img { height: 40px; width: auto; vertical-align: middle; }
+    .nav-links a { color: var(--brand-white); text-decoration: none; margin-left: 1.8rem; font-size: 0.95rem; font-weight: 500; }
+    .nav-cta { background: var(--brand-blue); padding: 0.7rem 1.4rem; border-radius: 4px; transition: 0.3s; }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
 
-    /* Hero Section */
-    .hero { padding: 8rem 0 5rem; background: var(--brand-black); color: var(--brand-white); text-align: center; }
-    .hero-headline { font-family: 'DM Serif Display', serif; font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; }
+    /* 4. HERO SECTION */
+    .hero { padding: 10rem 0 7rem; background: var(--brand-black); color: var(--brand-white); text-align: center; position: relative; overflow: hidden; }
+    .hero-headline { font-family: 'DM Serif Display', serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
     .hero-headline em { color: var(--brand-blue); font-style: italic; }
-    .hero-body { font-size: 1.25rem; max-width: 700px; margin: 0 auto 2.5rem; color: #ccc; }
-    .btn-primary { background: var(--brand-blue); color: white; padding: 1.2rem 2.5rem; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 1.1rem; display: inline-block; }
+    .hero-body { font-size: 1.3rem; max-width: 650px; margin: 0 auto 3rem; color: #BBB; font-weight: 300; }
+    .btn-primary { background: var(--brand-blue); color: white; padding: 1.4rem 3rem; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 1.15rem; display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,123,255,0.3); }
+    .btn-primary:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(0,123,255,0.4); }
 
-    /* Intake Section */
-    .intake-section { padding: 5rem 0; background: var(--gray-light); }
-    .intake-box { max-width: 800px; margin: 0 auto; background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    .intake-header { text-align: center; margin-bottom: 3rem; }
-    .intake-header h2 { font-family: 'DM Serif Display', serif; font-size: 2.5rem; }
+    /* 5. INTAKE SECTION */
+    .intake-section { padding: 6rem 0; background: var(--gray-light); }
+    .intake-box { max-width: 850px; margin: 0 auto; background: white; padding: 4rem; border-radius: 16px; border: 1px solid #EEE; box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
+    .intake-header { text-align: center; margin-bottom: 3.5rem; }
+    .intake-header h2 { font-family: 'DM Serif Display', serif; font-size: 2.8rem; margin-bottom: 1rem; }
+    .intake-header p { color: #666; font-size: 1.1rem; }
     
-    /* TelehealthStack Embed Area */
     .form-container { 
-      min-height: 400px; 
-      border: 1px solid #eee; 
-      border-radius: 8px; 
+      min-height: 450px; 
+      border: 2px dashed #DDD; 
+      border-radius: 12px; 
       display: flex; 
+      flex-direction: column;
       align-items: center; 
       justify-content: center; 
       text-align: center;
+      background: #FAFAFA;
     }
 
-    /* Footer & Legal */
-    .footer { background: white; padding: 4rem 0 2rem; border-top: 1px solid #eee; }
-    .footer-disclaimer { font-size: 0.75rem; color: #777; line-height: 1.8; margin-top: 2rem; border-top: 1px solid #f0f0f0; padding-top: 2rem; }
+    /* 6. FOOTER */
+    .footer { background: white; padding: 5rem 0 3rem; border-top: 1px solid #EEE; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .footer-disclaimer { font-size: 0.75rem; color: #888; line-height: 1.8; padding-top: 2rem; border-top: 1px solid #F0F0F0; }
     
+    /* MOBILE RESPONSIVENESS */
     @media (max-width: 768px) {
-      .hero-headline { font-size: 2.5rem; }
+      .hero-headline { font-size: 2.8rem; }
       .nav-links { display: none; }
+      .intake-box { padding: 2rem; }
     }
   </style>
 </head>
@@ -72,9 +79,9 @@
         <img src="mixameds_logo_white.png" alt="MixaMeds">
       </a>
       <div class="nav-links">
-        <a href="#how">Process</a>
+        <a href="#how">How It Works</a>
         <a href="#pricing">Pricing</a>
-        <a href="#intake" class="nav-cta">Start Consultation</a>
+        <a href="#intake" class="nav-cta">Get Started →</a>
       </div>
     </div>
   </nav>
@@ -82,9 +89,9 @@
   <section class="hero">
     <div class="container">
       <h1 class="hero-headline">Weight loss that<br/><em>actually works.</em></h1>
-      <p class="hero-body">Access compounded GLP-1 medications through our network of licensed US providers. Simple, monthly, and delivered to your door.</p>
+      <p class="hero-body">Compounded GLP-1 medications reviewed by licensed providers. No insurance required. Starting at $179.</p>
       <div class="hero-actions">
-        <a href="#intake" class="btn-primary">Check Your Eligibility — $179</a>
+        <a href="#intake" class="btn-primary">Check Your Eligibility</a>
       </div>
     </div>
   </section>
@@ -93,13 +100,14 @@
     <div class="container">
       <div class="intake-box">
         <div class="intake-header">
-          <h2>Medical Intake Form</h2>
-          <p>Please complete this 2-minute clinical assessment for our providers to review.</p>
+          <h2>Medical Consultation</h2>
+          <p>Begin your assessment for Semaglutide or Tirzepatide therapy.</p>
         </div>
         
         <div class="form-container">
-          <p style="color: var(--brand-blue); font-weight: 500;">
-            [ TelehealthStack Form Loading... ]
+          <img src="mixameds_logo_white.png" style="height: 40px; filter: invert(1); opacity: 0.2; margin-bottom: 1.5rem;">
+          <p style="color: var(--brand-blue); font-weight: 600; letter-spacing: 1px;">
+            SECURE INTAKE PORTAL LOADING...
           </p>
         </div>
       </div>
@@ -108,13 +116,13 @@
 
   <footer class="footer">
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <p style="font-weight: 600;">MixaMeds</p>
-        <p style="font-size: 0.8rem; color: #555;">© 2026 MixaMeds LLC · Miami, FL</p>
+      <div class="footer-top">
+        <p style="font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px;">MixaMeds</p>
+        <p style="font-size: 0.85rem; color: #666;">© 2026 MixaMeds LLC · hello@mixameds.com</p>
       </div>
 
       <div class="footer-disclaimer">
-        <p><strong>Medical Disclaimer:</strong> MixaMeds is a telehealth platform that connects patients with independent licensed medical providers. MixaMeds does not provide medical advice, diagnosis, or treatment. Compounded medications are prepared by state-licensed compounding pharmacies; they are not FDA-approved. The information on this website is for informational purposes only and is not a substitute for professional medical advice. Always seek the advice of your physician or other qualified health provider with any questions regarding a medical condition.</p>
+        <p><strong>IMPORTANT SAFETY INFORMATION:</strong> MixaMeds provides administrative and technology services to facilitate access to medical care. We are not a medical provider or a pharmacy. Medical services are provided by independent licensed practitioners. Compounded GLP-1 medications (Semaglutide/Tirzepatide) are not FDA-approved for safety or efficacy and are prepared in state-licensed compounding pharmacies. Always consult with a healthcare professional before starting any new medication. Individual results vary based on medical history and lifestyle factors.</p>
       </div>
     </div>
   </footer>
