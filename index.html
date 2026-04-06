@@ -4,22 +4,16 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MixaMeds — Simple Weight Loss, Delivered</title>
-  <meta name="description" content="Affordable compounded GLP-1 medications (semaglutide & tirzepatide) delivered to your door. Starting at $179."/>
+  <meta name="description" content="Affordable compounded GLP-1 medications delivered to your door. Doctor-reviewed, no contracts. Starting at $179."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
-    /* Added branding refinements to match your logo precisely */
-    :root {
-      --brand-dark: #0f2e2a; /* From your dark bg logo */
-      --brand-teal: #1d8870; /* Primary brand color */
-      --brand-light-teal: #7ecfc2;
-      --brand-cream: #f7f5f0;
-    }
-    .nav-logo img { height: 40px; width: auto; vertical-align: middle; }
-    .hero-capsule-art .cap-left { background-color: var(--brand-dark); }
-    .hero-capsule-art .cap-right { background-color: var(--brand-teal); }
+    :root { --brand-teal: #1d8870; --brand-dark: #0f2e2a; --brand-cream: #f7f5f0; }
+    .nav-logo img { height: 45px; width: auto; vertical-align: middle; }
+    .hero-capsule-art .cap-left { background: var(--brand-dark); }
+    .hero-capsule-art .cap-right { background: var(--brand-teal); }
   </style>
 </head>
 <body>
@@ -31,6 +25,7 @@
       </a>
       <div class="nav-links">
         <a href="#how-it-works">How It Works</a>
+        <a href="#medications">Medications</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
         <a href="#intake" class="nav-cta">Start Today →</a>
@@ -42,14 +37,13 @@
     <div class="hero-bg-dots"></div>
     <div class="container">
       <div class="hero-badge"><span class="badge-dot"></span>GLP-1 Telehealth · Available Nationwide</div>
-      <h1 class="hero-headline">Weight loss that<br/><em>actually works.</em></h1>
-      <p class="hero-body">Compounded semaglutide & tirzepatide, reviewed by licensed US providers. No insurance needed. No contracts.</p>
+      <h1 class="hero-headline">Weight loss that<br/><em>actually works.</em><br/><span class="headline-sub">Delivered to your door.</span></h1>
+      <p class="hero-body">Compounded semaglutide & tirzepatide, reviewed by licensed US providers. No insurance needed. No long-term contracts. Cancel anytime.</p>
       <div class="hero-actions">
         <a href="#intake" class="btn-primary">Get Started — $179 First Month</a>
         <a href="#how-it-works" class="btn-ghost">See How It Works ↓</a>
       </div>
     </div>
-    
     <div class="hero-capsule-art">
       <div class="capsule-large">
         <div class="cap-left"><span class="cap-plus">+</span></div>
@@ -66,7 +60,7 @@
         <div class="step" data-step="1">
           <div class="step-num">01</div>
           <h3>Complete Your Intake</h3>
-          <p>Answer a short health questionnaire. Takes about 5 minutes.</p>
+          <p>Answer a short online health questionnaire. Takes about 5 minutes.</p>
         </div>
         <div class="step" data-step="2">
           <div class="step-num">02</div>
@@ -76,7 +70,7 @@
         <div class="step" data-step="3">
           <div class="step-num">03</div>
           <h3>Get Your Prescription</h3>
-          <p>If approved, your medication is sent to a licensed pharmacy.</p>
+          <p>If approved, your medication is prepared to your specific protocol.</p>
         </div>
         <div class="step" data-step="4">
           <div class="step-num">04</div>
@@ -87,10 +81,42 @@
     </div>
   </section>
 
+  <section class="section meds-section" id="medications">
+    <div class="container">
+      <div class="section-label">Medications</div>
+      <h2 class="section-title">Choose your<br/><em>treatment.</em></h2>
+      <div class="meds-grid">
+        <div class="med-card featured">
+          <div class="med-badge">Most Popular</div>
+          <h3>Compounded Semaglutide</h3>
+          <p class="med-desc">The same active ingredient as Ozempic® and Wegovy®. Weekly injection.</p>
+          <ul class="med-features">
+            <li>Reduces appetite & cravings</li>
+            <li>Clinically studied mechanism</li>
+            <li>Dose titration included</li>
+          </ul>
+          <div class="med-price">From <strong>$179</strong><span>/first month</span></div>
+          <a href="#intake" class="btn-primary">Start Semaglutide</a>
+        </div>
+        <div class="med-card">
+          <h3>Compounded Tirzepatide</h3>
+          <p class="med-desc">Dual GLP-1 & GIP agonist — the active ingredient in Mounjaro® & Zepbound®.</p>
+          <ul class="med-features">
+            <li>Dual-action metabolic support</li>
+            <li>Enhanced insulin sensitivity</li>
+            <li>Dose titration included</li>
+          </ul>
+          <div class="med-price">From <strong>$249</strong><span>/first month</span></div>
+          <a href="#intake" class="btn-outline">Start Tirzepatide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section pricing-section" id="pricing">
     <div class="container">
       <div class="section-label">Pricing</div>
-      <h2 class="section-title">Transparent pricing.</h2>
+      <h2 class="section-title">Transparent pricing.<br/><em>No surprises.</em></h2>
       <div class="pricing-grid">
         <div class="price-card">
           <div class="price-tier">Semaglutide</div>
@@ -109,31 +135,56 @@
     </div>
   </section>
 
-  <section class="intake-section" id="intake">
+  <section class="section why-section">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-text">
+          <div class="section-label">Why MixaMeds</div>
+          <h2 class="section-title">Weight loss shouldn't<br/>require a <em>waiting room.</em></h2>
+          <p>No office visits. No insurance battles. Just a straightforward path to treatment that works.</p>
+        </div>
+        <div class="why-cards">
+          <div class="why-card"><h4>Compounded Pharmacy</h4><p>Prepared in FDA-regulated US facilities.</p></div>
+          <div class="why-card"><h4>HIPAA Compliant</h4><p>Your health data is encrypted and protected.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently asked questions.</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Do I need insurance? <span>+</span></button>
+          <div class="faq-a"><p>No. MixaMeds operates on a simple cash-pay model. HSA/FSA accepted.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I cancel anytime? <span>+</span></button>
+          <div class="faq-a"><p>Yes. MixaMeds is entirely month-to-month with no long-term contracts.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section intake-section" id="intake">
     <div class="container">
       <div class="intake-box">
-        <div class="intake-header">
-          <div class="section-label" style="text-align:center;">Patient Intake</div>
-          <h3>Start your medical evaluation</h3>
-        </div>
-        <div class="intake-embed-placeholder" style="background: white; border: 2px dashed var(--brand-teal); border-radius: 12px; padding: 4rem 2rem; text-align: center;">
-          <div class="placeholder-content">
-            <img src="mixameds_square_logo_final.svg" style="height: 60px; margin-bottom: 1rem; opacity: 0.5;">
-            <p style="color: var(--brand-teal); font-weight: 600;">Your TelehealthStack Form will appear here.</p>
+        <h3 style="text-align:center; margin-bottom: 2rem;">Patient Intake</h3>
+        <div class="intake-embed-placeholder" style="background: white; border: 2px dashed var(--brand-teal); padding: 4rem; text-align: center; border-radius: 12px;">
+          <img src="mixameds_square_logo_final.svg" style="height: 50px; opacity: 0.3; margin-bottom: 1rem;">
+          <p style="color: var(--brand-teal); font-weight: 600;">Your TelehealthStack Form will appear here.</p>
           </div>
-        </div>
       </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-bottom">
-        <p class="footer-legal" id="disclaimer" style="font-size: 0.7rem; color: #888;">
-          <strong>Medical Disclaimer:</strong> MixaMeds connects patients with licensed providers. Compounded medications are not FDA-approved. Brand names like Ozempic® are referenced for informational purposes only. Results vary.
-        </p>
-        <p class="footer-copy">© 2026 MixaMeds LLC · hello@mixameds.com</p>
-      </div>
+      <p class="footer-legal" style="font-size: 0.7rem; color: #888; margin-bottom: 1rem;">
+        <strong>Medical Disclaimer:</strong> Compounded medications are not FDA-approved. Results vary. Always consult a professional.
+      </p>
+      <p>© 2026 MixaMeds LLC · Miami, FL · hello@mixameds.com</p>
     </div>
   </footer>
 
