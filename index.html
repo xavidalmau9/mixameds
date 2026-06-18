@@ -15,43 +15,58 @@
     <header class="max-w-4xl mx-auto mt-16 text-center px-4">
         <h1 class="text-4xl font-extrabold text-slate-900">Find Specialized Clinics in Your Area</h1>
         <div class="mt-8 flex flex-col md:flex-row gap-4 justify-center items-center bg-white p-6 rounded-lg shadow-md">
-            <input type="text" id="zipSearch" placeholder="Enter Zip Code" class="border p-3 rounded-md w-full md:w-48">
+            <input type="text" id="zipSearch" placeholder="Enter Zip Code (e.g. 33143)" class="border p-3 rounded-md w-full md:w-48">
             <select id="goalSearch" class="border p-3 rounded-md w-full md:w-48">
                 <option value="all">Any Health Goal</option>
                 <option value="Longevity">Longevity & Biohacking</option>
                 <option value="Weight">Weight Management</option>
                 <option value="Hormone">Hormone Health</option>
             </select>
-            <button onclick="filterProviders()" class="bg-teal-600 text-white px-8 py-3 rounded-md font-bold hover:bg-teal-700">Search</button>
+            <button onclick="filterProviders()" class="bg-teal-600 text-white px-8 py-3 rounded-md font-bold hover:bg-teal-700 transition">Search</button>
         </div>
     </header>
 
-    <section class="max-w-5xl mx-auto mt-12 px-4">
-        <table class="min-w-full bg-white rounded-lg shadow overflow-hidden">
-            <thead class="bg-gray-50">
-                <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Clinic</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Specialty</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Action</th>
-                </tr>
-            </thead>
-            <tbody id="providerBody">
-                <tr data-focus="Longevity" data-zip="33139">
-                    <td class="px-6 py-4">Apex Health</td>
-                    <td class="px-6 py-4">Longevity & Biohacking</td>
-                    <td class="px-6 py-4"><button onclick="openModal('Apex Health')" class="text-teal-600 font-bold hover:underline">Get Matched</button></td>
-                </tr>
-            </tbody>
-        </table>
+    <section class="max-w-5xl mx-auto mt-12 px-4 mb-20">
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Clinic Name</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Specialty</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="providerBody">
+                    <tr data-focus="Longevity" data-zip="33143">
+                        <td class="px-6 py-4 font-semibold text-gray-900">Apex Health</td>
+                        <td class="px-6 py-4 text-gray-600">Longevity & Biohacking</td>
+                        <td class="px-6 py-4"><button onclick="openModal('Apex Health')" class="text-teal-600 font-bold hover:underline">Get Matched</button></td>
+                    </tr>
+                    <tr data-focus="Weight" data-zip="33143">
+                        <td class="px-6 py-4 font-semibold text-gray-900">Metabolic Care</td>
+                        <td class="px-6 py-4 text-gray-600">Weight Management</td>
+                        <td class="px-6 py-4"><button onclick="openModal('Metabolic Care')" class="text-teal-600 font-bold hover:underline">Get Matched</button></td>
+                    </tr>
+                    <tr data-focus="Hormone" data-zip="33156">
+                        <td class="px-6 py-4 font-semibold text-gray-900">Restore Wellness</td>
+                        <td class="px-6 py-4 text-gray-600">Hormone Health</td>
+                        <td class="px-6 py-4"><button onclick="openModal('Restore Wellness')" class="text-teal-600 font-bold hover:underline">Get Matched</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
-    <div id="intakeModal" class="fixed inset-0 bg-slate-900 bg-opacity-75 hidden flex justify-center items-center px-4">
-        <div class="bg-white w-full max-w-md p-6 rounded-xl">
-            <h3 id="modalTitle" class="text-xl font-bold mb-4">Connect with Clinic</h3>
+    <div id="intakeModal" class="fixed inset-0 bg-slate-900 bg-opacity-75 hidden flex justify-center items-center px-4 z-50">
+        <div class="bg-white w-full max-w-md p-6 rounded-xl shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modalTitle" class="text-xl font-bold text-slate-800">Connect with Clinic</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+            </div>
             <form id="leadForm" onsubmit="submitLead(event)">
-                <input type="text" id="fullName" placeholder="Full Name" required class="w-full border p-2 mb-4 rounded">
-                <input type="email" id="email" placeholder="Email" required class="w-full border p-2 mb-4 rounded">
-                <button type="submit" class="w-full bg-teal-600 text-white py-3 rounded font-bold">Submit</button>
+                <input type="text" id="fullName" placeholder="Full Name" required class="w-full border p-3 mb-4 rounded focus:ring-2 focus:ring-teal-500 outline-none">
+                <input type="email" id="email" placeholder="Email Address" required class="w-full border p-3 mb-4 rounded focus:ring-2 focus:ring-teal-500 outline-none">
+                <button type="submit" id="submitBtn" class="w-full bg-teal-600 text-white py-3 rounded font-bold hover:bg-teal-700 transition">Submit Request</button>
             </form>
         </div>
     </div>
@@ -60,14 +75,49 @@
         function filterProviders() {
             const zip = document.getElementById('zipSearch').value;
             const goal = document.getElementById('goalSearch').value;
-            // Logic to hide/show table rows based on data attributes
-            console.log("Filtering by", zip, goal);
+            const rows = document.querySelectorAll('#providerBody tr');
+
+            rows.forEach(row => {
+                const rowZip = row.getAttribute('data-zip');
+                const rowFocus = row.getAttribute('data-focus');
+                
+                const matchesZip = (zip === "" || rowZip === zip);
+                const matchesGoal = (goal === "all" || rowFocus === goal);
+
+                row.style.display = (matchesZip && matchesGoal) ? "" : "none";
+            });
         }
+
         function openModal(name) {
             document.getElementById('modalTitle').innerText = "Connect with " + name;
             document.getElementById('intakeModal').classList.remove('hidden');
         }
-        function submitLead(e) { e.preventDefault(); alert("Lead captured!"); }
+
+        function closeModal() {
+            document.getElementById('intakeModal').classList.add('hidden');
+        }
+
+        async function submitLead(e) { 
+            e.preventDefault(); 
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "Processing...";
+            
+            // This is where you insert your n8n Production Webhook URL
+            const payload = {
+                clinic: document.getElementById('modalTitle').innerText,
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                timestamp: new Date().toISOString()
+            };
+
+            console.log("Payload ready for n8n:", payload);
+            
+            setTimeout(() => {
+                alert("Request sent successfully!");
+                closeModal();
+                btn.innerText = "Submit Request";
+            }, 1000);
+        }
     </script>
 </body>
 </html>
