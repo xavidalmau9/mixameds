@@ -1,179 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MixaMeds — Simple Weight Loss, Delivered</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  
-  <style>
-    :root { 
-      --brand-blue: #007BFF; /* Electric Blue from Biz Plan */
-      --brand-black: #000000; 
-      --brand-white: #FFFFFF;
-      --gray-bg: #F9FAFB;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'DM Sans', sans-serif; color: var(--brand-black); background: var(--brand-white); line-height: 1.6; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-    em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--brand-blue); }
-
-    /* NAVIGATION */
-    .nav { background: var(--brand-black); padding: 1.2rem 0; position: sticky; top: 0; z-index: 1000; }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-    .nav-logo { color: white; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
-    .nav-links a { color: white; text-decoration: none; margin-left: 2rem; font-size: 0.9rem; font-weight: 500; }
-    .nav-cta { background: var(--brand-blue); padding: 0.7rem 1.4rem; border-radius: 4px; }
-
-    /* HERO */
-    .hero { background: var(--brand-black); color: white; padding: 10rem 0 6rem; text-align: center; }
-    .hero-headline { font-family: 'DM Serif Display', serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
-    .hero-body { font-size: 1.3rem; max-width: 700px; margin: 0 auto 3rem; color: #BBB; }
-    .btn-primary { background: var(--brand-blue); color: white; padding: 1.3rem 2.8rem; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 1.1rem; display: inline-block; transition: 0.3s; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,123,255,0.4); }
-
-    /* STATS BAR */
-    .stats-bar { background: #111; padding: 2rem 0; border-top: 1px solid #333; }
-    .stats-inner { display: flex; justify-content: space-between; text-align: center; color: white; }
-    .stat-num { display: block; font-size: 1.8rem; font-weight: 700; color: var(--brand-blue); }
-    .stat-label { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-
-    /* SECTIONS */
-    .section { padding: 7rem 0; }
-    .section-label { color: var(--brand-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem; }
-    .section-title { font-family: 'DM Serif Display', serif; font-size: 3rem; line-height: 1.2; margin-bottom: 3rem; }
-
-    /* HOW IT WORKS GRID */
-    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; }
-    .step-num { color: var(--brand-blue); font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem; }
-    .step h3 { margin-bottom: 1rem; font-size: 1.4rem; }
-    .step p { color: #555; }
-
-    /* CARDS (MEDS & PRICING) */
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .card { background: white; padding: 3rem; border-radius: 12px; border: 1px solid #EEE; transition: 0.3s; }
-    .card:hover { border-color: var(--brand-blue); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    .price-amount { font-size: 3rem; font-weight: 700; margin: 1.5rem 0; }
-    .price-amount span { font-size: 1rem; color: #888; }
-    .card ul { list-style: none; margin-bottom: 2rem; }
-    .card li { margin-bottom: 0.8rem; color: #555; padding-left: 1.5rem; position: relative; }
-    .card li::before { content: "✓"; position: absolute; left: 0; color: var(--brand-blue); font-weight: 700; }
-
-    /* FAQ */
-    .faq-list { max-width: 800px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid #EEE; padding: 1.5rem 0; }
-    .faq-q { font-weight: 600; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; width: 100%; border: none; background: none; text-align: left; }
-
-    /* INTAKE BOX */
-    .intake-section { background: var(--gray-bg); }
-    .intake-box { background: white; max-width: 850px; margin: 0 auto; padding: 4rem; border-radius: 16px; border: 1px solid #EEE; text-align: center; }
-    .form-placeholder { min-height: 400px; border: 2px dashed #DDD; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 2rem; }
-
-    /* FOOTER */
-    .footer { padding: 5rem 0 3rem; border-top: 1px solid #EEE; }
-    .footer-legal { font-size: 0.75rem; color: #888; line-height: 1.8; margin-top: 3rem; border-top: 1px solid #F0F0F0; padding-top: 2rem; }
-
-    @media (max-width: 768px) {
-      .hero-headline { font-size: 2.8rem; }
-      .grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MixaMeds | Precision Telehealth & Compounding</title>
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-50 font-sans text-slate-800">
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a href="/" class="nav-logo">Mixa<em>Meds</em></a>
-      <div class="nav-links">
-        <a href="#how">Process</a>
-        <a href="#meds">Treatments</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#intake" class="nav-cta">Start Consultation →</a>
-      </div>
-    </div>
-  </nav>
+    <nav class="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-extrabold text-teal-700 tracking-tight">MixaMeds.</div>
+        <button onclick="openModal()" class="bg-teal-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-teal-700 transition">Find a Clinic</button>
+    </nav>
 
-  <section class="hero">
-    <div class="container">
-      <h1 class="hero-headline">Weight loss that<br/><em>actually works.</em></h1>
-      <p class="hero-body">Compounded GLP-1 medications reviewed by licensed US providers. No insurance needed. No long-term contracts.</p>
-      <a href="#intake" class="btn-primary">Get Started — $179 First Month</a>
-    </div>
-  </section>
-
-  <div class="stats-bar">
-    <div class="container stats-inner">
-      <div class="stat"><span class="stat-num">$179</span><span class="stat-label">First Month</span></div>
-      <div class="stat"><span class="stat-num">48hrs</span><span class="stat-label">Provider Review</span></div>
-      <div class="stat"><span class="stat-num">0</span><span class="stat-label">Contracts</span></div>
-      <div class="stat"><span class="stat-num">50</span><span class="stat-label">States Served</span></div>
-    </div>
-  </div>
-
-  <section class="section" id="how">
-    <div class="container">
-      <div class="section-label">The Process</div>
-      <h2 class="section-title">Four steps to<br/><em>feeling better.</em></h2>
-      <div class="steps-grid">
-        <div class="step"><div class="step-num">01</div><h3>Complete Intake</h3><p>Answer a short health questionnaire in under 5 minutes.</p></div>
-        <div class="step"><div class="step-num">02</div><h3>Provider Review</h3><p>A licensed US provider reviews your intake within 24–48 hours.</p></div>
-        <div class="step"><div class="step-num">03</div><h3>Prescription</h3><p>If approved, your medication is prepared by an accredited pharmacy.</p></div>
-        <div class="step"><div class="step-num">04</div><h3>Home Delivery</h3><p>Ships free, directly to your door in discreet packaging.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="meds" style="background: var(--gray-bg);">
-    <div class="container">
-      <div class="section-label">Medications</div>
-      <h2 class="section-title">Choose your<br/><em>treatment.</em></h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Compounded Semaglutide</h3>
-          <p>Weekly injection. Same active ingredient as Ozempic® and Wegovy®.</p>
-          <div class="price-amount">$179<span>/first month</span></div>
-          <ul><li>Reduces appetite & cravings</li><li>Dose titration management</li><li>Free shipping included</li></ul>
-          <a href="#intake" class="btn-primary" style="width:100%; text-align:center;">Select Semaglutide</a>
+    <header class="max-w-4xl mx-auto mt-16 text-center px-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+            Top-Rated Men's Wellness Telehealth Clinics Licensed in <span class="text-teal-600">Florida</span>
+        </h1>
+        <p class="mt-4 text-lg text-slate-600">
+            Verified digital clinics with active state medical board approvals. Filter by insurance, cost, and compounding medication delivery options.
+        </p>
+        <div class="mt-8">
+            <button onclick="openModal()" class="bg-teal-600 text-white px-8 py-3 rounded-md text-lg font-bold shadow-lg hover:bg-teal-700 transition">Get Matched Now</button>
         </div>
-        <div class="card">
-          <h3>Compounded Tirzepatide</h3>
-          <p>Weekly injection. Same active ingredient as Mounjaro® and Zepbound®.</p>
-          <div class="price-amount">$249<span>/first month</span></div>
-          <ul><li>Dual-action GIP/GLP-1</li><li>Enhanced metabolic support</li><li>Free shipping included</li></ul>
-          <a href="#intake" class="btn-primary" style="width:100%; text-align:center; background: #000;">Select Tirzepatide</a>
+    </header>
+
+    <section class="max-w-5xl mx-auto mt-16 px-4">
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Clinic Name</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Core Focus</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pricing Type</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Apex Health</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-500">Longevity, TRT</td>
+                        <td class="px-6 py-4 whitespace-nowrap"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-bold">Insurance / HSA</span></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><button onclick="openModal()" class="text-teal-600 font-bold hover:underline">Get Matched</button></td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Revive Digital</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-500">Comprehensive</td>
+                        <td class="px-6 py-4 whitespace-nowrap"><span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs font-bold">Flat-Rate Cash</span></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><button onclick="openModal()" class="text-teal-600 font-bold hover:underline">Get Matched</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section intake-section" id="intake">
-    <div class="container">
-      <div class="intake-box">
-        <div class="section-label">Intake Portal</div>
-        <h2 class="section-title">Start your evaluation</h2>
-        <p>Complete the form below to begin your consultation with a licensed provider.</p>
-        <div class="form-placeholder">
-          <p style="color: var(--brand-blue); font-weight: 600;">[ SECURE INTAKE FORM LOADING... ]</p>
+    <section class="max-w-4xl mx-auto mt-16 px-4 mb-20 text-slate-700">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4">Understanding Telehealth Regulations in Florida</h2>
+        <p class="leading-relaxed">
+            Florida law requires that out-of-state physicians providing telehealth services to patients within the state register with the Florida Department of Health or hold an active, unencumbered Florida medical license. Prescriptions for controlled substances via telehealth are highly regulated, and valid patient-provider relationships must be established prior to the dispensing of restricted medications. MixaMeds cross-references provider network availability with local compounding pharmacy fulfillment centers to ensure state-level compliance.
+        </p>
+    </section>
+
+    <div id="intakeModal" class="fixed inset-0 bg-slate-900 bg-opacity-75 hidden flex justify-center items-center px-4 z-50">
+        <div class="bg-white w-full max-w-md rounded-xl shadow-2xl overflow-hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold">Find Your Provider</h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-800 font-bold text-xl">&times;</button>
+                </div>
+                
+                <form id="leadForm" onsubmit="submitLead(event)">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">First & Last Name</label>
+                        <input type="text" id="fullName" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-teal-500 focus:border-teal-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-teal-500 focus:border-teal-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700">Florida Zip Code</label>
+                        <input type="text" id="zipCode" required pattern="[0-9]{5}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-teal-500 focus:border-teal-500">
+                    </div>
+                    <button type="submit" id="submitBtn" class="w-full bg-teal-600 text-white font-bold py-3 rounded-md hover:bg-teal-700 transition">
+                        Connect with Clinic
+                    </button>
+                    <p id="successMsg" class="hidden mt-4 text-center text-green-600 font-bold">Match successful! Connecting to provider...</p>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div style="display:flex; justify-content: space-between; align-items: center;">
-        <p style="font-weight:700; font-size:1.5rem;">Mixa<em>Meds</em></p>
-        <p style="color:#666; font-size:0.9rem;">© 2026 MixaMeds LLC · hello@mixameds.com</p>
-      </div>
-      <div class="footer-legal">
-        <p><strong>IMPORTANT MEDICAL DISCLAIMER:</strong> MixaMeds connects patients with independent licensed providers and pharmacies[cite: 18]. We do not practice medicine or manufacture drugs[cite: 18]. Compounded medications are not FDA-approved equivalents of brand-name products[cite: 18, 63]. Results vary by individual health history[cite: 63]. Always consult a physician before starting therapy[cite: 18].</p>
-      </div>
-    </div>
-  </footer>
+    <script>
+        function openModal() {
+            document.getElementById('intakeModal').classList.remove('hidden');
+        }
 
+        function closeModal() {
+            document.getElementById('intakeModal').classList.add('hidden');
+        }
+
+        async function submitLead(event) {
+            event.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "Processing...";
+            btn.disabled = true;
+
+            const payload = {
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                zipCode: document.getElementById('zipCode').value,
+                state_context: "FL",
+                niche: "Mens Wellness",
+                timestamp: new Date().toISOString()
+            };
+
+            const webhookURL = "https://your-automation-webhook-url-here.com"; 
+
+            try {
+                setTimeout(() => {
+                    btn.classList.add('hidden');
+                    document.getElementById('successMsg').classList.remove('hidden');
+                    console.log("Lead Payload Sent:", payload);
+                }, 1000);
+
+            } catch (error) {
+                console.error("Webhook failed", error);
+                btn.innerText = "Error. Try Again.";
+                btn.disabled = false;
+            }
+        }
+    </script>
 </body>
 </html>
