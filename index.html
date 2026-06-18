@@ -2,122 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MixaMeds | Precision Telehealth & Wellness</title>
+    <title>MixaMeds | National Telehealth Directory</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-50 font-sans text-slate-800">
-
-    <nav class="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
-        <div class="text-2xl font-extrabold text-teal-700 tracking-tight">MixaMeds.</div>
-    </nav>
-
-    <header class="max-w-4xl mx-auto mt-16 text-center px-4">
-        <h1 class="text-4xl font-extrabold text-slate-900">Find Specialized Clinics in Your Area</h1>
-        <div class="mt-8 flex flex-col md:flex-row gap-4 justify-center items-center bg-white p-6 rounded-lg shadow-md">
-            <input type="text" id="zipSearch" placeholder="Enter Zip Code (e.g. 33143)" class="border p-3 rounded-md w-full md:w-48">
-            <select id="goalSearch" class="border p-3 rounded-md w-full md:w-48">
-                <option value="all">Any Health Goal</option>
-                <option value="Longevity">Longevity & Biohacking</option>
-                <option value="Weight">Weight Management</option>
-                <option value="Hormone">Hormone Health</option>
+<body class="bg-slate-50 p-6">
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Find Specialized Clinics Nationally</h1>
+        
+        <div class="flex flex-wrap gap-4 mb-8 bg-white p-4 rounded shadow">
+            <select id="stateSearch" class="border p-2 rounded">
+                <option value="all">All States</option>
+                <option value="FL">Florida</option>
+                <option value="TX">Texas</option>
+                <option value="PA">Pennsylvania</option>
             </select>
-            <button onclick="filterProviders()" class="bg-teal-600 text-white px-8 py-3 rounded-md font-bold hover:bg-teal-700 transition">Search</button>
+            <input type="text" id="zipSearch" placeholder="Zip Code" class="border p-2 rounded">
+            <select id="goalSearch" class="border p-2 rounded">
+                <option value="all">Any Health Goal</option>
+                <option value="Longevity">Longevity</option>
+                <option value="Weight">Weight Management</option>
+            </select>
+            <button onclick="filterTable()" class="bg-teal-600 text-white px-6 py-2 rounded">Search</button>
         </div>
-    </header>
-
-    <section class="max-w-5xl mx-auto mt-12 px-4 mb-20">
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Clinic Name</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Specialty</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="providerBody">
-                    <tr data-focus="Longevity" data-zip="33143">
-                        <td class="px-6 py-4 font-semibold text-gray-900">Apex Health</td>
-                        <td class="px-6 py-4 text-gray-600">Longevity & Biohacking</td>
-                        <td class="px-6 py-4"><button onclick="openModal('Apex Health')" class="text-teal-600 font-bold hover:underline">Get Matched</button></td>
-                    </tr>
-                    <tr data-focus="Weight" data-zip="33143">
-                        <td class="px-6 py-4 font-semibold text-gray-900">Metabolic Care</td>
-                        <td class="px-6 py-4 text-gray-600">Weight Management</td>
-                        <td class="px-6 py-4"><button onclick="openModal('Metabolic Care')" class="text-teal-600 font-bold hover:underline">Get Matched</button></td>
-                    </tr>
-                    <tr data-focus="Hormone" data-zip="33156">
-                        <td class="px-6 py-4 font-semibold text-gray-900">Restore Wellness</td>
-                        <td class="px-6 py-4 text-gray-600">Hormone Health</td>
-                        <td class="px-6 py-4"><button onclick="openModal('Restore Wellness')" class="text-teal-600 font-bold hover:underline">Get Matched</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <div id="intakeModal" class="fixed inset-0 bg-slate-900 bg-opacity-75 hidden flex justify-center items-center px-4 z-50">
-        <div class="bg-white w-full max-w-md p-6 rounded-xl shadow-2xl">
-            <div class="flex justify-between items-center mb-4">
-                <h3 id="modalTitle" class="text-xl font-bold text-slate-800">Connect with Clinic</h3>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
-            </div>
-            <form id="leadForm" onsubmit="submitLead(event)">
-                <input type="text" id="fullName" placeholder="Full Name" required class="w-full border p-3 mb-4 rounded focus:ring-2 focus:ring-teal-500 outline-none">
-                <input type="email" id="email" placeholder="Email Address" required class="w-full border p-3 mb-4 rounded focus:ring-2 focus:ring-teal-500 outline-none">
-                <button type="submit" id="submitBtn" class="w-full bg-teal-600 text-white py-3 rounded font-bold hover:bg-teal-700 transition">Submit Request</button>
-            </form>
-        </div>
+        
+        <table class="w-full bg-white rounded shadow">
+            <thead><tr class="bg-gray-100 text-left"><th class="p-3">State</th><th class="p-3">Clinic</th><th class="p-3">Specialty</th></tr></thead>
+            <tbody id="clinicTableBody"></tbody>
+        </table>
     </div>
 
     <script>
-        function filterProviders() {
-            const zip = document.getElementById('zipSearch').value;
-            const goal = document.getElementById('goalSearch').value;
-            const rows = document.querySelectorAll('#providerBody tr');
+        const CSV_URL = 'YOUR_GOOGLE_SHEET_CSV_URL';
 
+        async function fetchClinics() {
+            const res = await fetch(CSV_URL);
+            const text = await res.text();
+            const rows = text.split('\n').slice(1);
+            const tbody = document.getElementById('clinicTableBody');
+            
             rows.forEach(row => {
-                const rowZip = row.getAttribute('data-zip');
-                const rowFocus = row.getAttribute('data-focus');
-                
-                const matchesZip = (zip === "" || rowZip === zip);
-                const matchesGoal = (goal === "all" || rowFocus === goal);
-
-                row.style.display = (matchesZip && matchesGoal) ? "" : "none";
+                const [state, name, specialty, zip] = row.split(',');
+                if(!name) return;
+                tbody.innerHTML += `<tr data-state="${state}" data-zip="${zip}" data-focus="${specialty}">
+                    <td class="p-3">${state}</td><td class="p-3">${name}</td><td class="p-3">${specialty}</td></tr>`;
             });
         }
 
-        function openModal(name) {
-            document.getElementById('modalTitle').innerText = "Connect with " + name;
-            document.getElementById('intakeModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('intakeModal').classList.add('hidden');
-        }
-
-        async function submitLead(e) { 
-            e.preventDefault(); 
-            const btn = document.getElementById('submitBtn');
-            btn.innerText = "Processing...";
+        function filterTable() {
+            const state = document.getElementById('stateSearch').value;
+            const zip = document.getElementById('zipSearch').value;
+            const goal = document.getElementById('goalSearch').value;
             
-            // This is where you insert your n8n Production Webhook URL
-            const payload = {
-                clinic: document.getElementById('modalTitle').innerText,
-                name: document.getElementById('fullName').value,
-                email: document.getElementById('email').value,
-                timestamp: new Date().toISOString()
-            };
-
-            console.log("Payload ready for n8n:", payload);
-            
-            setTimeout(() => {
-                alert("Request sent successfully!");
-                closeModal();
-                btn.innerText = "Submit Request";
-            }, 1000);
+            document.querySelectorAll('#clinicTableBody tr').forEach(row => {
+                const matches = (state === "all" || row.dataset.state === state) && 
+                                (zip === "" || row.dataset.zip === zip) && 
+                                (goal === "all" || row.dataset.focus === goal);
+                row.style.display = matches ? "" : "none";
+            });
         }
+        window.onload = fetchClinics;
     </script>
 </body>
 </html>
